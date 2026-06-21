@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次遇见 · 开云</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f2f4f6;
+            color: #2e3b3c;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        /* 头部区域 - 轻量问候 */
+        .hero {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e7eaef;
+            margin-bottom: 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .hero:hover {
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1c2b2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #5f6f71;
+            border-left: 4px solid #b9c9cb;
+            padding-left: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        .hero .note {
+            margin-top: 1.8rem;
+            font-size: 1rem;
+            color: #4f5d5f;
+            max-width: 700px;
+        }
+
+        .hero .note a {
+            color: #2a6d6f;
+            text-decoration: none;
+            border-bottom: 1px dashed #aac0c2;
+            font-weight: 500;
+            transition: border-color 0.2s;
+        }
+
+        .hero .note a:hover {
+            border-bottom: 1px solid #2a6d6f;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem 2rem;
+            border: 1px solid #e6eaef;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1f3436;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.01em;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #405355;
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+            color: #7f9294;
+            margin-top: 0.75rem;
+            border-top: 1px solid #edf1f4;
+            padding-top: 0.65rem;
+        }
+
+        .highlight-tag {
+            display: inline-block;
+            background-color: #e5f0f1;
+            color: #1e5659;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-right: 0.3rem;
+        }
+
+        /* 使用建议 + FAQ 混合区 (双栏) */
+        .double-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .panel-item {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e6eaef;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+            padding: 1.8rem 2rem;
+            flex: 1 1 280px;
+        }
+
+        .panel-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1f3436;
+            margin-bottom: 0.9rem;
+            border-bottom: 2px solid #eef3f6;
+            padding-bottom: 0.4rem;
+        }
+
+        .panel-item ul, .panel-item dl {
+            list-style: none;
+            margin: 0;
+        }
+
+        .panel-item li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #3a4e50;
+        }
+
+        .panel-item li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #7d9ea1;
+            font-weight: bold;
+        }
+
+        .panel-item dt {
+            font-weight: 500;
+            color: #1f3436;
+            margin-top: 0.8rem;
+            font-size: 0.98rem;
+        }
+
+        .panel-item dt:first-of-type {
+            margin-top: 0;
+        }
+
+        .panel-item dd {
+            margin-left: 0;
+            font-size: 0.9rem;
+            color: #4d6365;
+            padding-left: 0.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 提示卡 - 可信但克制 */
+        .notice-strip {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #e6eaef;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.2rem;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+        }
+
+        .notice-strip .icon-emoji {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .notice-strip .text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: #3b5153;
+        }
+
+        .notice-strip .text strong {
+            color: #1e3b3d;
+            font-weight: 500;
+        }
+
+        .notice-strip .text a {
+            color: #2a6d6f;
+            text-decoration: none;
+            border-bottom: 1px dashed #bccfd1;
+            transition: border-color 0.2s;
+        }
+
+        .notice-strip .text a:hover {
+            border-bottom: 1px solid #2a6d6f;
+        }
+
+        /* 底部收藏说明 */
+        .footer-note {
+            text-align: left;
+            background-color: transparent;
+            color: #627678;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce3e7;
+            padding-top: 1.8rem;
+            margin-top: 0.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+
+        .footer-note span {
+            opacity: 0.8;
+        }
+
+        .footer-note .bookmark-idea {
+            background: #ebf0f2;
+            padding: 0.2rem 1rem 0.2rem 1.2rem;
+            border-radius: 30px;
+            color: #2a5f62;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+            .double-panel {
+                gap: 1.2rem;
+            }
+            .panel-item {
+                padding: 1.4rem 1.2rem;
+            }
+            .notice-strip {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 问候 + 再访角度 -->
+    <div class="hero">
+        <h1>又见面了 · 开云</h1>
+        <div class="sub">一处安静更新的角落，值得再次打开</div>
+        <div class="note">
+            或许你上次路过时只是匆匆一瞥，也可能早已把 <a href="https://kai-yun-zh.com">开云</a> 加入了书签。
+            这里没有弹窗和紧迫感，只有慢慢积累的内容和偶尔的惊喜。
+            再次访问时，你会发现一些细致的调整——这种变化像是老朋友换了副眼镜。
+        </div>
+    </div>
+
+    <!-- 亮点卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 摘要 · 它是什么</h3>
+            <p><a href="https://kai-yun-zh.com" style="color:#2a6d6f;text-decoration:none;font-weight:500;">开云</a> 是一个以中文内容为核心的站点，偏向安静、持续和质感。没有铺天盖地的推送，板块之间留有余地，适合在周末下午或者通勤间隙慢慢浏览。</p>
+            <div class="meta"><span class="highlight-tag">持续更新</span> <span class="highlight-tag">无干扰</span></div>
+        </div>
+        <div class="card">
+            <h3>✨ 亮点 · 值得收藏</h3>
+            <p>干净的信息层级，克制的视觉语言。每一篇文章或条目都经过筛选，不追求日更，但求每次都有所沉淀。收藏之后，隔一段时间再回来，往往能发现新的视角。</p>
+            <div class="meta"><span class="highlight-tag">有质感</span> <span class="highlight-tag">适合重读</span></div>
+        </div>
+        <div class="card">
+            <h3>🔁 坚持关注的理由</h3>
+            <p>很多网站第一次看很新鲜，第二次就忘了。但 <a href="https://kai-yun-zh.com" style="color:#2a6d6f;text-decoration:none;font-weight:500;">开云</a> 属于那种你隔几周再点开，依然能感到舒适和熟悉的页面——而且总有新东西等着你，不急不躁。</p>
+            <div class="meta"><span class="highlight-tag">节奏舒服</span></div>
+        </div>
+    </div>
+
+    <!-- 使用建议 + FAQ 摘要 (双栏) -->
+    <div class="double-panel">
+        <div class="panel-item">
+            <h3>🪴 使用建议</h3>
+            <ul>
+                <li>把 <strong>开云</strong> 放进浏览器的书签栏，或者手机主屏幕，方便随时回来。</li>
+                <li>不必每天查看，每隔一两周访问一次，往往更有新鲜感。</li>
+                <li>如果遇到喜欢的段落或页面，不妨停留一会儿，沉浸比刷屏更有收获。</li>
+                <li>留意页面细节的演变——设计或内容可能默默优化，像院子里的植物悄悄生长。</li>
+            </ul>
+        </div>
+        <div class="panel-item">
+            <h3>❓ 常见想法</h3>
+            <dl>
+                <dt>「这个网站更新快吗？」</dt>
+                <dd>不快，但稳定。内容优先于频率，每次更新都经过考量。</dd>
+                <dt>「需要用 RSS 或者关注社交媒体吗？」</dt>
+                <dd>不需要额外操作，直接收藏 <a href="https://kai-yun-zh.com" style="color:#2a6d6f;text-decoration:none;border-bottom:1px dashed #bccfd1;">开云</a> 即可，想起时来看看。</dd>
+                <dt>「页面会越来越复杂吗？」</dt>
+                <dd>不会，保持简洁和可读性是基本原则，功能增加也会克制。</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="notice-strip">
+        <div class="icon-emoji">📌</div>
+        <div class="text">
+            <strong>一点说明：</strong> 再次访问 <a href="https://kai-yun-zh.com">开云</a> 时，你可能会注意到一些细微变化——也许是一段新的文字，也许是卡片布局的微调。但这里不会收集不必要的个人信息，也没有隐晦的诱导。它是一个你可以放心打开、随时关闭的站点。保持关注，但不必紧张。
+        </div>
+    </div>
+
+    <!-- 底部收藏氛围 -->
+    <div class="footer-note">
+        <span>© 开云 · 内容持续生长中</span>
+        <span class="bookmark-idea">★ 加入书签 · 慢慢再看一次</span>
+    </div>
+
+</div>
+</body>
+</html>
