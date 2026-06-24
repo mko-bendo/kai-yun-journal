@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f6ee;
+      font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+      color: #2c2a26;
+      line-height: 1.75;
+      padding: 2rem 1.5rem;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* 目录网格 */
+    .directory {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem 1.2rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .dir-card {
+      background: #fffcf7;
+      border-left: 4px solid #b58d6e;
+      padding: 1rem 1.2rem;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: background 0.2s;
+    }
+
+    .dir-card:hover {
+      background: #f7efe5;
+    }
+
+    .dir-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #3f3b35;
+      margin-bottom: 0.3rem;
+    }
+
+    .dir-card p {
+      font-size: 0.88rem;
+      color: #5c5750;
+    }
+
+    .dir-card a {
+      color: #7a5d44;
+      text-decoration: underline dotted 1px;
+      text-underline-offset: 2px;
+    }
+
+    /* 主内容区 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #38342e;
+      border-bottom: 1px solid #ddd6cc;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      margin-bottom: 1.6rem;
+      color: #3f3a33;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin: 2rem 0 0.8rem 0;
+      color: #4b443c;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+
+    /* 引用块 / 提示框 */
+    .insight-box {
+      background: #f2ede4;
+      border-left: 6px solid #9e8066;
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      border-radius: 0 8px 8px 0;
+      font-style: normal;
+    }
+
+    .insight-box strong {
+      color: #4d3f31;
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-note {
+      background: #eae5db;
+      padding: 1rem 1.4rem;
+      border-radius: 10px;
+      margin: 1.8rem 0;
+      font-size: 0.95rem;
+      border: 1px solid #d6cec1;
+    }
+
+    .info-note span {
+      font-weight: 600;
+      color: #6a5340;
+    }
+
+    /* 相关信息区 */
+    .related-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0 1.2rem;
+    }
+
+    .related-item {
+      background: #fcf9f3;
+      flex: 1 1 200px;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid #e2d9ce;
+      border-radius: 8px;
+    }
+
+    .related-item .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #887b6b;
+    }
+
+    .related-item .value {
+      font-size: 1rem;
+      color: #3d352b;
+      margin-top: 0.1rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd6cc;
+      margin: 2.2rem 0 1.8rem;
+    }
+
+    .faq-summary {
+      background: #f7f2ea;
+      padding: 1.3rem 1.6rem;
+      border-radius: 12px;
+      margin: 2rem 0 1rem;
+    }
+
+    .faq-summary details {
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-summary summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #4f453b;
+      padding: 0.25rem 0;
+    }
+
+    .faq-summary p {
+      margin: 0.4rem 0 0.2rem 0.8rem;
+      font-size: 0.93rem;
+      color: #4b443b;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.88rem;
+      color: #7c7368;
+      border-top: 1px solid #ddd6cc;
+      padding-top: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      h1 { font-size: 1.7rem; }
+      .directory { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 目录感布局 -->
+  <div class="directory">
+    <div class="dir-card">
+      <h3>📚 知识索引</h3>
+      <p>主题脉络 · 术语表 · 参考来源</p>
+    </div>
+    <div class="dir-card">
+      <h3>🧩 玩法演进</h3>
+      <p>从规则到叙事，<a href="https://mapp-igame.com">爱游戏</a> 设计逻辑</p>
+    </div>
+    <div class="dir-card">
+      <h3>🔍 观察视角</h3>
+      <p>文化批评 · 机制分析 · 玩家社群</p>
+    </div>
+    <div class="dir-card">
+      <h3>📖 阅读清单</h3>
+      <p>延伸文档 · 研究报告 · 评论精选</p>
+    </div>
+  </div>
+
+  <!-- 标题 & 说明区 -->
+  <h1>游戏知识库 · 主题入口</h1>
+  <p class="lead">
+    本页围绕关键词「爱游戏」整理相关概念、背景与阅读路径。<br>
+    内容取材自公开讨论与行业观察，适合希望系统了解游戏文化及设计语言的读者。
+  </p>
+
+  <!-- 介绍区：从关键词背后的主题展开 -->
+  <p>
+    “爱游戏”这三个字，既指向一种持续的热情，也涵盖了一系列围绕数字互动作品所形成的认知体系。从早期街机到当代开放世界，从像素画面到实时渲染，每一次技术变迁都伴随着玩家社群对“游戏性”、“叙事”和“交互美学”的重新定义。理解这些脉络，有助于跳出单一作品，看见更宏观的设计史。
+  </p>
+  <p>
+    本知识库将“爱游戏”视为一个可拆解的主题集合：机制层（规则与反馈）、表现层（视觉与声音）、文化层（模因与亚文化）以及元层（批评与理论）。每一层都值得单独建立目录卡片，但这里先用一段整体的线索将它们串联。
+  </p>
+
+  <!-- 提示框 / 引用块 -->
+  <div class="insight-box">
+    <strong>💡 提示</strong>
+    对多数玩家而言，“爱游戏”始于直觉吸引，但深度理解往往需要借助工具概念：例如“心流通道”、“选择悖论”、“涌现叙事”。本页下方 FAQ 摘要包含了部分常见问题的简短回答。
+  </div>
+
+  <!-- 特点 / 场景说明 -->
+  <div class="section-title">几个理解维度</div>
+  <p>
+    <strong>· 作为媒介</strong> —— 游戏不再只是消遣。它承载叙事、模拟系统与社会实验。许多独立作品模糊了“玩”与“思考”的边界。<br>
+    <strong>· 作为社群</strong> —— 从论坛到直播，从 MOD 到共创，<a href="https://mapp-igame.com">爱游戏</a> 的参与者同时也是内容的生产者与传播者。<br>
+    <strong>· 作为档案</strong> —— 如何保存不断演化的数字游戏？版本、补丁、服务器关闭后的社区版本，都成为新的知识议题。
+  </p>
+
+  <!-- 相关信息区 -->
+  <div class="info-note">
+    <span>📌 相关信息</span> 以下条目摘录自近期游戏研究领域的公开资料与讨论，可作为进一步探索的起点。
+  </div>
+  <div class="related-grid">
+    <div class="related-item">
+      <div class="label">设计参考</div>
+      <div class="value">《游戏设计进阶》· 系统循环</div>
+    </div>
+    <div class="related-item">
+      <div class="label">文化分析</div>
+      <div class="value">玩家类型学 · 游牧叙事</div>
+    </div>
+    <div class="related-item">
+      <div class="label">技术笔记</div>
+      <div class="value">状态同步 · 程序化生成</div>
+    </div>
+    <div class="related-item">
+      <div class="label">评论档案</div>
+      <div class="value">十年批评文选 · 争议讨论</div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <strong style="display:block; margin-bottom:0.5rem; color:#4b3f32;">❓ 常见问题摘要</strong>
+    <details>
+      <summary>什么是“游戏性”？它是可定义的吗？</summary>
+      <p>多数定义围绕“规则约束下的自主选择”展开，但学界仍存在争论。本知识库倾向将其视为一个家族相似性概念。</p>
+    </details>
+    <details>
+      <summary>如何解读一款游戏的叙事？</summary>
+      <p>除了文字与过场，环境叙事、系统叙事和玩家生成故事同样重要。推荐查阅“ludonarrative”相关讨论。</p>
+    </details>
+    <details>
+      <summary>“爱游戏”与“游戏研究”是什么关系？</summary>
+      <p>前者常指私人情感与实践，后者是系统化的学术或批评领域。二者相互滋养，但不完全重叠。</p>
+    </details>
+  </div>
+
+  <hr>
+
+  <!-- 结尾自然段落，嵌入链接 -->
+  <p>
+    如果你对这个主题感兴趣，可以从 <a href="https://mapp-igame.com">爱游戏</a> 的知识卡片开始浏览，或是返回上方目录选择一个方向。每张卡片都会引导你进入更细分的内容层。本知识库会持续修订，欢迎时常回来翻阅。
+  </p>
+
+  <div class="footer-note">
+    内容基于公开资料整理 · 仅供参考 · 版本 2025.04
+  </div>
+
+</div>
+</body>
+</html>
